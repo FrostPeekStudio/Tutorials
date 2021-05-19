@@ -16,5 +16,5 @@ public class Spawner_Pooled : MonoBehaviour
             SpawnFromPool();
         }
     }
-    private void SpawnFromPool() => GameObjectPool_Result.instance.GetObject(1, transform.position, Vector3.zero);
+    private void SpawnFromPool() => GameObjectPool_Result.instance.GetObject(1, spawnedPrefab, transform.position, Vector3.zero);
 }
