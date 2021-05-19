@@ -7,9 +7,7 @@ public class GameObjectPool_Result : MonoBehaviour
 
     public static GameObjectPool_Result instance;
     private void Awake() => instance = this;
-
-    private GameObject bufferObject;
-    public GameObject GetObject(int id, Vector3 position, Vector3 rotation)
+    public GameObject GetObject(int id, GameObject gameObject, Vector3 position, Vector3 rotation)
     {
         if (objectPool.TryGetValue(id, out Queue<GameObject> objectList))
         {
@@ -19,11 +17,10 @@ public class GameObjectPool_Result : MonoBehaviour
             }
             else
             {
-                bufferObject = objectList.Dequeue();
-
-                bufferObject.transform.SetPositionAndRotation(position, Quaternion.Euler(rotation));
-                bufferObject.SetActive(true);
-                return bufferObject;
+                GameObject obj = objectList.Dequeue();
+                obj.transform.SetPositionAndRotation(position, Quaternion.Euler(rotation));
+                obj.SetActive(true);
+                return obj;
             }
         }
         else return CreateObject(gameObject, position, rotation);
@@ -45,9 +42,9 @@ public class GameObjectPool_Result : MonoBehaviour
     }
     private GameObject CreateObject(GameObject gameObject, Vector3 position, Vector3 rotation)
     {
-        bufferObject = Instantiate(gameObject, position, Quaternion.Euler(rotation), transform);
-        bufferObject.name = gameObject.name;
-        return bufferObject;
+        GameObject obj = Instantiate(gameObject, position, Quaternion.Euler(rotation), transform);
+        obj.name = gameObject.name;
+        return obj;
     }
     public void PreloadObject(int amount, int id, GameObject gameObject)
     {
