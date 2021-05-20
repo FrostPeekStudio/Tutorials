@@ -45,6 +45,7 @@ public class StrategyCamera : MonoBehaviour
     {
         myTransform = transform;
         newPosition = transform.position;
+        //Application.targetFrameRate = 60;
     }
     private void Update() => CameraUpdate();
     private void CameraUpdate()

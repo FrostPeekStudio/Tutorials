@@ -7,7 +7,7 @@ public class Spawner_Pooled : MonoBehaviour
 
     private void Start()
     {
-        GameObjectPool_Result.instance.PreloadObject(200, 1, spawnedPrefab);
+        GameObjectPool.instance.PreloadObject(200, 1, spawnedPrefab);
     }
     private void FixedUpdate()
     {
@@ -16,5 +16,8 @@ public class Spawner_Pooled : MonoBehaviour
             SpawnFromPool();
         }
     }
-    private void SpawnFromPool() => GameObjectPool_Result.instance.GetObject(1, spawnedPrefab, transform.position, Vector3.zero);
+    private void SpawnFromPool()
+    {
+        GameObjectPool.instance.GetObject(1, spawnedPrefab, transform.position, Vector3.zero);
+    }
 }

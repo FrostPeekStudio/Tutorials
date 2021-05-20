@@ -16,6 +16,6 @@ public class Ball_Pooled : MonoBehaviour
     {
         timer += Time.fixedDeltaTime;
         if(timer >= lifeTime)
-        GameObjectPool_Result.instance.ReturnGameObject(1, gameObject);
+        GameObjectPool.instance.ReturnGameObject(1, gameObject);
     }
 }
