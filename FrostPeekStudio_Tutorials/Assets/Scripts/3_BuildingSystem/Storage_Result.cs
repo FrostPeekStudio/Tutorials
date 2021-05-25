@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Storage : MonoBehaviour
+public class Storage_Result : MonoBehaviour
 {
     private static readonly Dictionary<BuildingType, BuildingData> buildings = new Dictionary<BuildingType, BuildingData>();
-    public static Storage instance;
+    public static Storage_Result instance;
 
     public GameObject meshPrefab;
     private void Awake()
